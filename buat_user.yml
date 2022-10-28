@@ -1,0 +1,10 @@
+- name: buat user untuk remote server
+  hosts: myserver
+  
+  vars_files:
+    - kredensial.yml
+  tasks:
+    - name: buat user dari kredensial.yml
+      user:
+        name: "{{username}}"
+        password: "{{pw | password_hash('sha512')}}"
